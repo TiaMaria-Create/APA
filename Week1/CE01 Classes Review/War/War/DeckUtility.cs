@@ -20,33 +20,6 @@ namespace War
             //for each of the four card suites
             //loop through each card value
 
-            for (int suit = 0; suit < 4; suit++)
-            {
-                for (int value = 1; value < 11; value++)
-                {
-                    if (suit == 0)
-                    {
-                        Card Spades = new Card(suit, value);
-                        deck.Add(Spades);
-                    }
-                    else if (suit == 1)
-                    {
-                       Card Hearts = new Card(value, suit);
-                        deck.Add(Hearts);
-                    }
-                    else if (suit == 3)
-                    {
-                        Card Clubs = new Card(value, suit);
-                        deck.Add(Clubs);
-                    }
-                    else if (suit == 2)
-                    {
-                        Card Diamonds = new Card(value, suit);
-                        deck.Add(Diamonds);
-                    }
-                }
-            }
-
             // This class should create a deck of cards
             // This should use one or more loops to create
             // each card in a standard, 4-suit deck of cards
@@ -60,7 +33,42 @@ namespace War
 
             // This method should return the list when complete.
 
+            for (int suit = 0; suit < 4; suit++)
+            {
+                for (int value = 1; value < 11; value++)
+                {
+                    if (suit == 0)
+                    {
+                        Card Spades = new Card(suit, value);
+                        deck.Add(Spades);
+                    }
+                    else if (suit == 1)
+                    {
+                       Card Hearts = new Card(suit, value);
+                        deck.Add(Hearts);
+                    }
+                    else if (suit == 3)
+                    {
+                        Card Clubs = new Card(suit, value);
+                        deck.Add(Clubs);
+                    }
+                    else if (suit == 2)
+                    {
+                        Card Diamonds = new Card(suit, value);
+                        deck.Add(Diamonds);
+                    }
+                }
+
+                for (int i = 0; i < deck.Count; i++)
+                {
+                    Console.WriteLine(deck[i]);
+
+                }
+            }
+
             return deck;
+
+
         }
         public static List<Card> ShuffleDeck(List<Card> old_deck)
         {

@@ -72,9 +72,13 @@ namespace War
 
 
             //set the value of the card
-            if (CardValue < 12 && CardValue < 0)
+            if (CardValue < 11 && CardValue < 0)
             {
                 value = CardValue.ToString();
+            }
+            else if (CardValue == 11)
+            {
+                value = "Jack";
             }
             else if (CardValue == 12)
             {

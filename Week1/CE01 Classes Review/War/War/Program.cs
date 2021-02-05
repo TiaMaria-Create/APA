@@ -15,6 +15,7 @@ namespace War
         {
             // Instantiate the war application
 
+
             Console.Title = "War the Game";
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -33,13 +34,9 @@ namespace War
             Console.ResetColor();
             Console.WriteLine("------------------------------------------------");
 
+           // WarApp play = new WarApp();
 
-
-            Card test = new Card(2, 7);
-            string testString = test.DisplayCard();
-            Console.WriteLine(testString);
-
-      
+            DeckUtility.CreateDeck();
         }
     }
 }
