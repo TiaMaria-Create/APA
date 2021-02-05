@@ -15,7 +15,7 @@ namespace War
         {
             // Instantiate the war application
 
-            Console.Title = "BlackJackLight";
+            Console.Title = "War the Game";
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("  .-----------. ");
