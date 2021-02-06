@@ -13,7 +13,7 @@ namespace War
     {
         // Create a List that will hold the player's hand of cards.
         // This should be a list of card objects.
-        List<Card> playerHand = new List<Card>();
+        List<Card> _playerHand = new List<Card>();
 
         //============================================================
 
@@ -23,6 +23,12 @@ namespace War
         // Create a property to store the player's score
         public int Score { get; set; }
 
+        // Create a property to store the player's cards
+        public List<Card> PlayerHand
+        {
+            get { return _playerHand; }
+            set { _playerHand = value; }
+        }
         //============================================================
 
         // Create a constructor method that accepts the name

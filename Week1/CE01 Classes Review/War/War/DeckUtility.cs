@@ -35,7 +35,7 @@ namespace War
 
             for (int suit = 0; suit < 4; suit++)
             {
-                for (int value = 1; value < 11; value++)
+                for (int value = 1; value < 14; value++)
                 {
                     if (suit == 0)
                     {
@@ -46,30 +46,32 @@ namespace War
                     {
                        Card Hearts = new Card(suit, value);
                         deck.Add(Hearts);
+
                     }
                     else if (suit == 3)
                     {
                         Card Clubs = new Card(suit, value);
                         deck.Add(Clubs);
+
                     }
                     else if (suit == 2)
                     {
                         Card Diamonds = new Card(suit, value);
                         deck.Add(Diamonds);
+
                     }
-                }
 
-                for (int i = 0; i < deck.Count; i++)
-                {
-                    Console.WriteLine(deck[i]);
 
                 }
+
+
             }
-
+            //Console.WriteLine(deck);
             return deck;
 
-
         }
+
+
         public static List<Card> ShuffleDeck(List<Card> old_deck)
         {
             List<Card> new_deck = new List<Card>();
@@ -90,6 +92,7 @@ namespace War
             // two halves and returns a Dictionary with the two bits
             List<Card> first = new List<Card>();
             List<Card> second = new List<Card>();
+
             Dictionary<string, List<Card>> pair = new Dictionary<string, List<Card>>();
 
             for (int i = 0; i < 52; i++)
@@ -103,9 +106,13 @@ namespace War
                     second.Add(deck[i]);
                 }
             }
+
             pair.Add("first_half", first);
             pair.Add("second_half", second);
+
+
             return pair;
+
         }
     }
 }

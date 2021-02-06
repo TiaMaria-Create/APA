@@ -34,9 +34,11 @@ namespace War
             Console.ResetColor();
             Console.WriteLine("------------------------------------------------");
 
-           // WarApp play = new WarApp();
+            WarApp play = new WarApp();
 
-            DeckUtility.CreateDeck();
+     
+
+
         }
     }
 }
