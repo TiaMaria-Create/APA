@@ -175,8 +175,9 @@ namespace War
                 Console.WriteLine("\r\n--------------------------");
                 Console.WriteLine($"|      {_players[1].Name} won!            |");
                 Console.WriteLine("--------------------------");
-                ;
-            }
+                
+            } else
+                Console.WriteLine("No one won. It was a draw!");
 
             // Announce the winner or if the game was a tie.
         }
