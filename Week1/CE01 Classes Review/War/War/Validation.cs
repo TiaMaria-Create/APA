@@ -77,7 +77,8 @@ namespace War
 
         public static string YesNo(string response)
         {
-            while(response != "Y" || response != "N" || response != "y" || response != "n")
+
+            while(response.ToUpper() != "Y" && response.ToUpper() != "N" )
             {
                 Console.Write("\r\nPlease enter [Y/N] only.");
                 response = Console.ReadLine();

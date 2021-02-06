@@ -65,27 +65,35 @@ namespace War
             // Ask the user if they would like to play a round
             Console.WriteLine("Want to play a round? [Y/N]?");
             string response = Console.ReadLine();
+            Validation.YesNo(response);
+
             // Loop as long as the users have cards in their hands and the user
             // answers "yes" to this question
+
             while (response.ToUpper() == "Y")
-            {
+             {
 
-                //Console.Clear();
+            //Console.Clear();
 
-                    while (_players[0].PlayerHand.Count != 0)
+            while (_players[0].PlayerHand.Count != 0)
                     {
                         Round();
                         Console.WriteLine("Want to play another round? [Y/N]?");
                         response = Console.ReadLine();
-                        //Validation.YesNo(response);
+                        Validation.YesNo(response);
 
                     }
+
+                if (_players[0].PlayerHand.Count == 0)
+                {
+                    Console.WriteLine("\r\n===============================================");
+                    Console.WriteLine("There are no more cards in the players decks.");
+                        response = "N";
+                }
             }
 
-            if (_players[0].PlayerHand.Count == 0)
-            {
-                Console.WriteLine("There are no more cards in the players decks.");
-            }
+
+
             // When this loop is over you should call the EndGame() method.
             EndGame();
         }
@@ -149,19 +157,25 @@ namespace War
         public void EndGame()
         {
             // Announce the end of the game
-
+            Console.WriteLine("\r\n===============================================");
             Console.WriteLine("Great game!");
 
             // User the player's score to determine who has won the game
             if (_scoreOne > _scoreTwo)
             {
-                Console.WriteLine($"{_players[0].Name} won!");
+                Console.WriteLine("\r\n--------------------------");
+                Console.WriteLine($"|      {_players[0].Name} won!           |");
+                Console.WriteLine("--------------------------");
+
             }
 
             else if (_scoreTwo > _scoreOne)
             {
-                Console.WriteLine($"{_players[1].Name} won!");
 
+                Console.WriteLine("\r\n--------------------------");
+                Console.WriteLine($"|      {_players[1].Name} won!            |");
+                Console.WriteLine("--------------------------");
+                ;
             }
 
             // Announce the winner or if the game was a tie.
