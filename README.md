@@ -12,7 +12,7 @@ Degree Program: Web Development<br>
 
 ## Progress
 - [X] Repo Created: Complete!
-- [ ] Week 1 work - In Progress
-- [ ] Week 2 work
+- [X] Week 1 work - Complete!
+- [ ] Week 2 work - In Progress
 - [ ] Week 3 work
 - [ ] Week 4 work
