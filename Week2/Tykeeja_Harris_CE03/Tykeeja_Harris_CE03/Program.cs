@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Tykeeja_Harris_CE03
 {
@@ -6,7 +7,10 @@ namespace Tykeeja_Harris_CE03
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Application app = new Application();
         }
+
     }
+
 }
+

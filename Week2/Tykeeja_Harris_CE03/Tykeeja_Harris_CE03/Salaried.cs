@@ -1,9 +1,12 @@
 ﻿using System;
 namespace Tykeeja_Harris_CE03
 {
-    public class Salaried
+    public class Salaried : Employee
     {
-        public Salaried()
+        //private field for salary
+        private decimal _salary;
+
+        public Salaried(string name, string address, decimal salary) :base (name, address)
         {
         }
     }

@@ -1,10 +1,11 @@
 ﻿using System;
 namespace Tykeeja_Harris_CE03
 {
-    public class PartTime
+    public class PartTime : Hourly
     {
-        public PartTime()
+        public PartTime(string name, string address, decimal pph, decimal hpw) : base(name,address,pph, hpw)
         {
+
         }
     }
 }
