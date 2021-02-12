@@ -12,6 +12,11 @@ namespace Tykeeja_Harris_CE03
             get { return _name; }
         }
 
+        public string Address
+        {
+            get { return _address; }
+        }
+
         //constructor
         public Employee(string name, string address)
         {
