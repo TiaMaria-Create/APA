@@ -8,6 +8,7 @@ namespace Tykeeja_Harris_CE03
     {
         //create a list of employees
         List<Employee> employees = new List<Employee>();
+        FullTime fulltime;
 
         public Application()
         {
@@ -36,9 +37,14 @@ namespace Tykeeja_Harris_CE03
                         string[] data = line.Split('|');
 
                         //Instantiate new movie object
-                        Employee employee = new Employee(data[0], data[1]);
-                        //add employee to list
-                        employees.Add(employee); 
+                        decimal hpw = decimal.Parse(data[2]);
+
+                        decimal pph = decimal.Parse(data[3]);
+                        fulltime  = new FullTime(data[0], data[1], pph, hpw);
+                        //add fulltime employee to list
+                        employees.Add(fulltime);
+
+                       
                         
 
                     }
@@ -141,11 +147,14 @@ namespace Tykeeja_Harris_CE03
 
             //Display all the employees in the list
             Console.WriteLine("\n{0,-20} {1,5}  {2, 20}\n", "Name", "Address", "Pay");
+            //calculate pay
+            decimal yearly = fulltime.CalculatePay();
+            Console.WriteLine(yearly);
             //loop through the employee list to display the employee data
             for (int i =0; i < employees.Count; i++)
             {
 
-                Console.WriteLine("{0,-20} {1,5}  {2,15}\n", employees[i].Name, employees[i].Address,"$10000" );
+                Console.WriteLine("{0,-20} {1,5}  {2,15}\n", employees[i].Name, employees[i].Address, employees[i].CalculatePay()) ;
 
             }
 

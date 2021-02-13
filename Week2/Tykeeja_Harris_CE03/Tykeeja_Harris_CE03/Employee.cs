@@ -29,8 +29,15 @@ namespace Tykeeja_Harris_CE03
 
         //virtual method to calculate pay
         //otherclasses will override this class
-        public virtual  void CalculatePay()
+        public virtual decimal CalculatePay()
         {
+            //This method will be overriden
+            decimal weekly = 0;
+            decimal hourly= 0;
+
+           decimal yearly = weekly * hourly;
+
+            return yearly;
 
         }
     }

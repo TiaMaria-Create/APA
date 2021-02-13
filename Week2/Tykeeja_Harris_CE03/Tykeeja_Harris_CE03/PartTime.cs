@@ -7,5 +7,12 @@ namespace Tykeeja_Harris_CE03
         {
 
         }
+
+        public override decimal CalculatePay()
+        {
+            decimal weeklyPay = _payPerHour * _hourPerWeek;
+            decimal yearlyPay = weeklyPay * 52; //for 52 weeks in a year
+            return yearlyPay;
+        }
     }
 }
