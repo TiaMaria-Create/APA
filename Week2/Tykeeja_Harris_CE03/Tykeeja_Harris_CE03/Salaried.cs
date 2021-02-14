@@ -8,13 +8,15 @@ namespace Tykeeja_Harris_CE03
 
         public Salaried(string name, string address, decimal salary) :base (name, address)
         {
+            _salary = salary;
         }
 
         public override decimal CalculatePay()
         {
-            decimal yearlyPay;
-            yearlyPay = _salary;
+            decimal yearlyPay = _salary;
             return yearlyPay;
         }
+
+      
     }
 }

@@ -8,6 +8,7 @@ namespace Tykeeja_Harris_CE03
 
         public Manager(string name, string address, decimal salary, decimal bonus) : base (name, address, salary)
         {
+            _bonus = bonus;
         }
 
         //manager yearly income is base amount +bonus

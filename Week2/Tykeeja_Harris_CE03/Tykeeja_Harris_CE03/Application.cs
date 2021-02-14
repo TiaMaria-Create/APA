@@ -40,7 +40,7 @@ namespace Tykeeja_Harris_CE03
                         decimal hpw = decimal.Parse(data[2]);
 
                         decimal pph = decimal.Parse(data[3]);
-                        fulltime = new FullTime(data[0], data[1], pph, hpw);
+                        fulltime = new FullTime(data[0], data[1], pph);
                         //add fulltime employee to list
                         employees.Add(fulltime);
 
@@ -174,19 +174,12 @@ namespace Tykeeja_Harris_CE03
                         string empHour = Console.ReadLine();
                         //validate the user entered a number
                         Validation.IntegerValidation(empHour);
-                        //ask the user how many hours they work in a week
-                        Console.WriteLine("How many hours do they work a week?");
-                        //catch the response
-                        string empWeek = Console.ReadLine();
-                        //valid date the user entered a number
-                        Validation.IntegerValidation(empWeek);
 
                         //convert the int variables to decimals
-                        decimal hpw = decimal.Parse(empWeek);
                         decimal pph = decimal.Parse(empHour);
 
                         //create the fulltime employee
-                        FullTime addFullTime = new FullTime(empName,empAdd,pph,hpw);
+                        FullTime addFullTime = new FullTime(empName,empAdd,pph);
                         employees.Add(addFullTime);
 
                         //tell the user the employee has been added
@@ -200,17 +193,126 @@ namespace Tykeeja_Harris_CE03
                     case "2":
                     case "parttime":
                         Console.Clear();
-                        Console.WriteLine("case 2");
-                        break;
+                        //ask for the employees name
+                        Console.WriteLine("What is the employee's name?");
+                        //catch the employees name
+                        string partTimeName = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(partTimeName);
+                        //ask the employees address
+                        Console.WriteLine("What is the employees address?");
+                        //catch the user response
+                        string partTimeAddress = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(partTimeAddress);
+                        //ask for the employers hourly wage
+                        Console.WriteLine("How much money do they make per hour?");
+                        //catch the response
+                        string partTimeHourly = Console.ReadLine();
+                        //validate the user entered a number
+                        Validation.IntegerValidation(partTimeHourly);
+                        //ask the user how many hours they work in a week
+                        Console.WriteLine("How many hours do they work a week?");
+                        //catch the response
+                        string partTimeWeekly = Console.ReadLine();
+                        //valid date the user entered a number
+                        Validation.IntegerValidation(partTimeWeekly);
+
+                        //convert the int variables to decimals
+                        decimal hoursPerWeek = decimal.Parse(partTimeWeekly);
+                        decimal partTimeHours = decimal.Parse(partTimeHourly);
+
+                        //create the parttime employee
+                        PartTime addPartTime = new PartTime(partTimeName, partTimeAddress, partTimeHours, hoursPerWeek);
+                        employees.Add(addPartTime);
+
+                        //tell the user the employee has been added
+                        Console.WriteLine($"\r\n{employees[employees.Count - 1].Name} has been added.");
+                        //allow the user to continue
+                        Console.WriteLine("\r\nPress any key to continue...");
+                        Console.ReadKey(); break;
+
+
                     case "3":
                     case "salaried":
                         Console.Clear();
-                        Console.WriteLine("case 3");
-                        break;
+                        //ask for the employees name
+                        Console.WriteLine("What is the employee's name?");
+                        //catch the employees name
+                        string salaryName = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(salaryName);
+                        //ask the employees address
+                        Console.WriteLine("What is the employees address?");
+                        //catch the user response
+                        string salaryAddress = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(salaryAddress);
+                        //ask for the employees  wage
+                        Console.WriteLine("What is the employee's annual salary?");
+                        //catch the response
+                        string salary = Console.ReadLine();
+                        //verify the user entered a number
+                        Validation.IntegerValidation(salary);
+
+                        //convert the number to a decimal
+                        decimal yearlySalary = decimal.Parse(salary);
+
+                        //create the salary employee
+                        Salaried salaryEmployee = new Salaried(salaryName, salaryAddress, yearlySalary);
+
+                        //add the salaried employee to the employee list in the program
+                        employees.Add(salaryEmployee);
+
+                        //tell the user the employee has been added
+                        Console.WriteLine($"\r\n{employees[employees.Count - 1].Name} has been added.");
+                        //allow the user to continue
+                        Console.WriteLine("\r\nPress any key to continue...");
+                        Console.ReadKey(); break;
+
+
                     case "4":
                     case "manager":
-                        Console.WriteLine("case 4");
-                        break;
+                        Console.Clear();
+                        //ask for the employees name
+                        Console.WriteLine("What is the employee's name?");
+                        //catch the employees name
+                        string managerName = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(managerName);
+                        //ask the employees address
+                        Console.WriteLine("What is the employees address?");
+                        //catch the user response
+                        string managerAddy = Console.ReadLine();
+                        //validate the user entered valid input
+                        Validation.StringValidation(managerAddy);
+                        //ask for the employees  wage
+                        Console.WriteLine("What is the employee's annual salary?");
+                        //catch the response
+                        string managerSalary = Console.ReadLine();
+                        //verify the user entered a number
+                        Validation.IntegerValidation(managerSalary);
+                        //ask for the bonus amount
+                        Console.WriteLine("What is the bonus the employee was given?");
+                        //catch the response
+                        string bonus = Console.ReadLine();
+                        //verify its a number
+                        Validation.IntegerValidation(bonus);
+                        //convert the number to a decimal
+                        decimal managerSalary1 = decimal.Parse(managerSalary);
+                        decimal managerbonus = decimal.Parse(bonus);
+
+                        //create the salary employee
+                        Manager manager = new Manager(managerName, managerAddy, managerSalary1, managerbonus);
+
+                        //add the manager employee to the employee list in the program
+                        employees.Add(manager);
+
+                        //tell the user the employee has been added
+                        Console.WriteLine($"\r\n{employees[employees.Count - 1].Name} has been added.");
+                        //allow the user to continue
+                        Console.WriteLine("\r\nPress any key to continue...");
+                        Console.ReadKey(); break;
 
                     default:
                         Console.WriteLine("You did not enter a valid response. Please re-enter.");
@@ -268,12 +370,12 @@ namespace Tykeeja_Harris_CE03
 
 
                 }
+
+                keepGoing = false;
             }
 
 
 
-            //Exit Message
-            Console.WriteLine("Have a nice day!");
 
 
      }
@@ -301,7 +403,7 @@ namespace Tykeeja_Harris_CE03
             for (int i =0; i < employees.Count; i++)
             {
 
-                Console.WriteLine("{0,-20} {1,5}  {2,15}\n", employees[i].Name, employees[i].Address, employees[i].CalculatePay()) ;
+                Console.WriteLine("{0,-20} {1,5}  {2,15:C}\n", employees[i].Name, employees[i].Address, employees[i].CalculatePay()) ;
 
             }
 
