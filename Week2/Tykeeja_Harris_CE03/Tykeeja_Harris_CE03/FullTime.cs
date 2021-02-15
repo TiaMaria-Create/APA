@@ -3,7 +3,9 @@ namespace Tykeeja_Harris_CE03
 {
     public class FullTime : Hourly
     {
-        public FullTime(string n, string add, decimal pph) : base(n, add, pph, 40)
+        const decimal _fullTime_hours = 40;
+
+        public FullTime(string n, string add, decimal pph) : base(n, add, pph, _fullTime_hours)
         {
         }
 

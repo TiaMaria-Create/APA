@@ -12,8 +12,6 @@ namespace Tykeeja_Harris_CE03
 
         public Application()
         {
-
-
             //Add employees from text file
             //define a string for the file location of the text file
             string fileLocation = "../../../output/";
@@ -43,13 +41,8 @@ namespace Tykeeja_Harris_CE03
                         fulltime = new FullTime(data[0], data[1], pph);
                         //add fulltime employee to list
                         employees.Add(fulltime);
-
-
                     }
-
-
                 }
-
             }
 
             else
@@ -59,11 +52,11 @@ namespace Tykeeja_Harris_CE03
                 //create the file
                 using (File.Create(path))
                 {
-                    Console.WriteLine("No employees listed.");
+                    Console.WriteLine("No employees listed. Text file will be created.");
                 }
             }
 
-            //instantiate a dynamic menu of movie objects
+            //instantiate a dynamic menu
             List<string> userList = new List<string>() { "Add Employee", "Remove Employee", "Display Payroll", "Exit" };
             menu user = new menu(userList);
 
@@ -71,7 +64,7 @@ namespace Tykeeja_Harris_CE03
             while (display)
             {
                 //Display title
-                UI.ActionText("\r\nAdd Employee");
+                UI.ActionText("\r\nEmployee Tracker");
                 UI.Seperator();
                 //reset the color
                 Console.ResetColor();
@@ -100,11 +93,30 @@ namespace Tykeeja_Harris_CE03
 
                     case 2:
                         Console.Clear();
-                        RemoveEmployee();
+                        if (employees.Count != 0)
+                        {
+                            RemoveEmployee();
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no employees to remove. Add employees first.");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                        }
+
                         break;
                     case 3:
                         Console.Clear();
-                        DisplayPayroll();
+                        if (employees.Count != 0)
+                        {
+                            DisplayPayroll();
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no employees to display. Add employees first.");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                        }
                         break;
                     case 4:
                         display = false;
@@ -131,7 +143,7 @@ namespace Tykeeja_Harris_CE03
             while (display)
             {
                 //Display title
-                UI.ActionText("\r\nEmployee Tracker");
+                UI.ActionText("\r\nAdd Employee");
                 UI.Seperator();
                 //reset the color
                 Console.ResetColor();
@@ -142,15 +154,15 @@ namespace Tykeeja_Harris_CE03
                 Console.WriteLine("\r\n");
 
                 //ask the user for the selection
-                Console.WriteLine("Please enter your selection:");
+                Console.WriteLine("What type of employee would you like to add?:");
                 //catch the user repsonse
                 string response = Console.ReadLine();
                 //make sure the response is not blank
                 Validation.StringValidation(response);
 
 
-              //  Begin switch statement that runs the option the user selected
-                        switch (response.ToLower())
+                //  Begin switch statement that runs the option the user selected
+                switch (response.ToLower())
 
                 {
                     case "fulltime":
@@ -179,17 +191,17 @@ namespace Tykeeja_Harris_CE03
                         decimal pph = decimal.Parse(empHour);
 
                         //create the fulltime employee
-                        FullTime addFullTime = new FullTime(empName,empAdd,pph);
+                        FullTime addFullTime = new FullTime(empName, empAdd, pph);
                         employees.Add(addFullTime);
 
                         //tell the user the employee has been added
-                        Console.WriteLine($"\r\n{employees[employees.Count-1].Name} has been added.");
+                        Console.WriteLine($"\r\n{employees[employees.Count - 1].Name} has been added.");
                         //allow the user to continue
                         Console.WriteLine("\r\nPress any key to continue...");
                         Console.ReadKey();
                         break;
 
-                
+
                     case "2":
                     case "parttime":
                         Console.Clear();
@@ -322,8 +334,8 @@ namespace Tykeeja_Harris_CE03
                 }
 
                 display = false;
-               
-                }
+
+            }
 
             List<string> addList = new List<string>() { "Add Another Employee", "Return to the Main Menu" };
             menu addEmployeeList = new menu(addList);
@@ -345,7 +357,7 @@ namespace Tykeeja_Harris_CE03
                 Console.WriteLine("\r\n");
 
                 //ask the user for the selection
-                Console.WriteLine("Please enter your selection:");
+                Console.WriteLine("What would you like to do next?:");
                 //catch the user repsonse
                 string options = Console.ReadLine();
                 //make sure the response is not blank
@@ -375,36 +387,107 @@ namespace Tykeeja_Harris_CE03
             }
 
 
-
-
-
-     }
+        }
 
 
         public void RemoveEmployee()
         {
 
-        }
-
-
-        public void DisplayPayroll()
-        {
 
             //Display title
-            UI.ActionText("\r\nEmployees");
+            UI.ActionText("\r\nRemove Employees");
             UI.Seperator();
             //reset the color
             Console.ResetColor();
 
 
             //Display all the employees in the list
-            Console.WriteLine("\n{0,-20} {1,5}  {2, 20}\n", "Name", "Address", "Pay");         
+            Console.WriteLine("\n{0,-20} {1,5}  {2, 20}\n", "Name", "Address", "Pay");
+
             //loop through the employee list to display the employee data
-            for (int i =0; i < employees.Count; i++)
+            int count = 0;
+            for (int i = 0; i < employees.Count; i++)
             {
 
-                Console.WriteLine("{0,-20} {1,5}  {2,15:C}\n", employees[i].Name, employees[i].Address, employees[i].CalculatePay()) ;
+                Console.WriteLine("{0,0} {1,-20} {2,5} {3,15:C}\n", count++, employees[i].Name, employees[i].Address, employees[i].CalculatePay());
 
+            }
+
+            //ask the user what employee would they like to remove?
+            Console.WriteLine("What number employee would you like to remove?");
+            //catch the response
+            string remove = Console.ReadLine();
+
+            if ((int.TryParse(remove, out int convertedNum)))
+            {
+
+                Validation.Range(convertedNum, employees.Count-1, 0);
+                //remove using index
+                Console.WriteLine($"{employees[convertedNum].Name} has been removed.");
+                employees.RemoveAt(convertedNum);
+
+
+            }
+            //remove by name
+
+            //{
+            //    Validation.StringValidation(remove);
+            //    //remove using name
+            //    for (int i = 0; i < employees.Count; i++)
+            //    {
+
+
+            //        if (employees[i].Name == remove)
+            //        {
+            //            Console.WriteLine($"{employees[i].Name} has been removed.");
+            //            employees.RemoveAt(i);
+            //            break;
+
+            //        }
+
+            //        else 
+            //        {
+            //            Console.WriteLine("Employee does not exist. Try again.");
+            //            remove = Console.ReadLine();
+
+
+
+
+
+
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+
+        public void DisplayPayroll()
+        {
+            if (employees != null)
+
+            {
+                //Display title
+                UI.ActionText("\r\nEmployees");
+                UI.Seperator();
+                //reset the color
+                Console.ResetColor();
+
+
+                //Display all the employees in the list
+                Console.WriteLine("\n{0,-20} {1,5}  {2, 20}\n", "Name", "Address", "Pay");
+                //loop through the employee list to display the employee data
+                for (int i = 0; i < employees.Count; i++)
+                {
+
+                    Console.WriteLine("{0,-20} {1,5}  {2,15:C}\n", employees[i].Name, employees[i].Address, employees[i].CalculatePay());
+
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("There are no employees to display. Add an employee first.");
             }
 
 
@@ -412,6 +495,7 @@ namespace Tykeeja_Harris_CE03
             Console.WriteLine("\r\nPress any key to continue.");
             Console.ReadKey();
         }
+         
     }
 
 }
