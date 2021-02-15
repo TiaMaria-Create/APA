@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 
+//  Name: Harris, Tykeeja
+// Date: 2/11/2021
+// Course: APA
+// Synopsis: CEO2
+
+
 namespace Tykeeja_Harris_CE03
 {
     public class Application
@@ -78,20 +84,22 @@ namespace Tykeeja_Harris_CE03
                 Console.WriteLine("Please enter your selection:");
                 string response = Console.ReadLine();
 
-                Validation.IntegerValidation(response);
-                int selection = int.Parse(response);
-                Validation.Range((selection), 4, 1);
+                //Validation.IntegerValidation(response);
+                //int selection = int.Parse(response);
+                //Validation.Range((selection), 4, 1);
 
                 //Begin switch statement that runs the class challenge the user selected
-                switch (selection)
+                switch (response.ToLower())
 
                 {
-                    case 1:
+                    case "1":
+                    case "add employee":
                         Console.Clear();
                         AddEmployee();
                         break;
 
-                    case 2:
+                    case "2":
+                    case "remove employee":
                         Console.Clear();
                         if (employees.Count != 0)
                         {
@@ -105,7 +113,9 @@ namespace Tykeeja_Harris_CE03
                         }
 
                         break;
-                    case 3:
+
+                    case "3":
+                    case "display payroll":
                         Console.Clear();
                         if (employees.Count != 0)
                         {
@@ -118,10 +128,16 @@ namespace Tykeeja_Harris_CE03
                             Console.ReadKey();
                         }
                         break;
-                    case 4:
+
+                    case "4":
+                    case "exit":
                         display = false;
                         break;
 
+                    default:
+                        Console.WriteLine("You did not enter a valid response. Please re-enter.");
+                        response = Console.ReadLine();
+                        break;
 
                 }
             }

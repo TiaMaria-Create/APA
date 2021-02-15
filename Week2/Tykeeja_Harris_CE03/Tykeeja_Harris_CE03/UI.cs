@@ -1,5 +1,10 @@
 ﻿using System;
 namespace Tykeeja_Harris_CE03
+
+//  Name: Harris, Tykeeja
+// Date: 2/11/2021
+// Course: APA
+// Synopsis: CEO2
 {
     public class UI
     {
