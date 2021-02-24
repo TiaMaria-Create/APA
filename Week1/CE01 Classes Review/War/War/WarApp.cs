@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//  Name: Harris, Tykeeja
+//  Name: Harris, Tia
 // Date: 02/3/2021
 // Course: APA
 // Synopsis: Lesson 1.1 | Class Review

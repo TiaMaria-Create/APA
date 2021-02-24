@@ -16,8 +16,7 @@ namespace Tykeeja_Harris_CE03
         {
             _payPerHour = pph;
             _hourPerWeek = hpw;
-            _name = name;
-            _address = address;
+           
         }
 
 

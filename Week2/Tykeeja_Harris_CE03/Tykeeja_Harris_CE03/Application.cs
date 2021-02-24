@@ -421,7 +421,7 @@ namespace Tykeeja_Harris_CE03
             Console.WriteLine("\n{0,-20} {1,5}  {2, 20}\n", "Name", "Address", "Pay");
 
             //loop through the employee list to display the employee data
-            int count = 0;
+            int count = 1;
             for (int i = 0; i < employees.Count; i++)
             {
 
@@ -434,45 +434,62 @@ namespace Tykeeja_Harris_CE03
             //catch the response
             string remove = Console.ReadLine();
 
+
             if ((int.TryParse(remove, out int convertedNum)))
             {
 
-                Validation.Range(convertedNum, employees.Count-1, 0);
+                Validation.Range(convertedNum, employees.Count, 1);
                 //remove using index
-                Console.WriteLine($"{employees[convertedNum].Name} has been removed.");
-                employees.RemoveAt(convertedNum);
+                Console.WriteLine($"{employees[convertedNum - 1].Name} has been removed.");
+                employees.RemoveAt(convertedNum - 1);
 
 
             }
-            //remove by name
 
+            //else
             //{
+
+            //    //remove by name
+
+
             //    Validation.StringValidation(remove);
             //    //remove using name
             //    for (int i = 0; i < employees.Count; i++)
             //    {
 
+            //        string name = employees[i].Name;
+            //        bool go = true;
 
-            //        if (employees[i].Name == remove)
+            //        while (go)
             //        {
-            //            Console.WriteLine($"{employees[i].Name} has been removed.");
-            //            employees.RemoveAt(i);
-            //            break;
 
+            //            if (name == remove)
+            //            {
+            //                Console.WriteLine($"{employees[i].Name} has been removed.");
+            //                employees.RemoveAt(i);
+            //                break;
+
+            //            }
+
+            //            else
+            //            {
+            //                while (name != remove)
+            //                {
+            //                    Console.WriteLine("Employee does not exist. Try again.");
+            //                    remove = Console.ReadLine();
+
+            //                }
+
+
+
+
+            //            }
             //        }
-
-            //        else 
-            //        {
-            //            Console.WriteLine("Employee does not exist. Try again.");
-            //            remove = Console.ReadLine();
-
-
-
-
-
-
-
-            Console.WriteLine("Press any key to continue...");
+            //   }
+            //}
+        
+            
+                        Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             Console.Clear();
 
